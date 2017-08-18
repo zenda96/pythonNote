@@ -128,3 +128,81 @@ functions:
         modified()
         crawl_delay(useragent)
         request_rate(useragent)
+
+# python --[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/#id11) 
+
+将一段文档传入BeautifulSoup 的构造方法,就能得到一个文档的对象, 可以传入一段字符串或一个文件句柄
+```sh 
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(open("index.html"))
+
+soup = BeautifulSoup("<html>data</html>")
+```
+Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: 
+* Tag 
+* NavigableString 
+* BeautifulSoup 
+* Comment 
+
+### Tag 
+Tag 对象与XML或HTML原生文档中的tag相同，Tag中最重要的属性是: name和attributes
+### NavigableString
+字符串常被包含在tag内.Beautiful Soup用 NavigableString 类来包装tag中的字符串
+```sh
+tag.string
+# u'Extremely bold'
+type(tag.string)
+# <class 'bs4.element.NavigableString'>
+```
+通过 unicode() 方法可以直接将 NavigableString 对象转换成Unicode字符串.如果想在Beautiful Soup之外使用 NavigableString 对象,需要调用 unicode() 方法,将该对象转换成普通的Unicode字符串,否则就算Beautiful Soup已方法已经执行结束,该对象的输出也会带有对象的引用地址.这样会浪费内存.
+```sh
+unicode_string = unicode(tag.string)
+unicode_string
+# u'Extremely bold'
+type(unicode_string)
+# <type 'unicode'>
+```
+tag中包含的字符串不能编辑,但是可以被替换成其它的字符串,用 replace_with() 方法
+```sh
+tag.string.replace_with("No longer bold")
+tag
+# <blockquote>No longer bold</blockquote>
+```
+### BeautifulSoup
+BeautifulSoup 对象表示的是一个文档的全部内容.大部分时候,可以把它当作 Tag 对象,它支持 遍历文档树 和 搜索文档树 中描述的大部分的方法.
+
+因为 BeautifulSoup 对象并不是真正的HTML或XML的tag,所以它没有name和attribute属性.但有时查看它的 .name 属性是很方便的,所以 BeautifulSoup 对象包含了一个值为 “[document]” 的特殊属性 .name
+```sh
+soup.name
+# u'[document]'
+```
+### Comment
+Comment 对象是一个特殊类型的 NavigableString 对象
+```sh
+markup = "<b><!--Hey, buddy. Want to buy a used parser?--></b>"
+soup = BeautifulSoup(markup)
+comment = soup.b.string
+type(comment)
+# <class 'bs4.element.Comment'>
+```
+但是当它出现在HTML文档中时, Comment 对象会使用特殊的格式输出
+
+```sh
+print(soup.b.prettify())
+# <b>
+#  <!--Hey, buddy. Want to buy a used parser?-->
+# </b>
+```
+#### 遍历文档树
+* 子节点
+* 父节点
+* 兄弟节点
+* 回退和前进
+#### 搜索文档树
+#### 修改文档树
+#### 输出
+#### 解析部分文档
+
+
+
