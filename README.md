@@ -74,6 +74,7 @@ classes :
 ### urllib.parse
 [urllib.parse](https://docs.python.org/3.6/library/urllib.parse.html#module-urllib.parse) = URL parsing + URL quoting
 
+##### URL parsing
 functions:
 * urllib.parse.urlparse(urlstring, scheme=”, allow_fragments=True)
 
@@ -91,7 +92,7 @@ functions:
 
 * urllib.parse.urldefrag(url)
 
-### URL Quoting
+##### URL Quoting
 
 * urllib.parse.quote(string, safe=’/’, encoding=None, errors=None)
 
@@ -106,3 +107,24 @@ functions:
 * urllib.parse.unquote_to_bytes(string)
 
 * urllib.parse.urlencode(query, doseq=False, safe=”, encoding=None, errors=None, quote_via=quote_plus)
+
+### urllib.error
+
+* exception urllib.error.URLError
+
+* exception urllib.error.HTTPError
+
+* exception urllib.error.ContentTooShortError(msg, content)
+
+### urllib.robotparser
+
+* class urllib.robotparser.RobotFileParser(url=”)
+
+        set_url(url)
+        read()
+        parse(lines)
+        can_fetch(useragent, url)
+        mtime()
+        modified()
+        crawl_delay(useragent)
+        request_rate(useragent)
