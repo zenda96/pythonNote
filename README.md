@@ -71,3 +71,38 @@ classes :
 * class urllib.request.UnknownHandler
 
 * class urllib.request.HTTPErrorProcessor
+### urllib.parse
+[urllib.parse](https://docs.python.org/3.6/library/urllib.parse.html#module-urllib.parse) = URL parsing + URL quoting
+
+functions:
+* urllib.parse.urlparse(urlstring, scheme=”, allow_fragments=True)
+
+* urllib.parse.parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding=’utf-8’, errors=’replace’)
+
+* urllib.parse.parse_qsl(qs, keep_blank_values=False, strict_parsing=False, encoding=’utf-8’, errors=’replace’)¶
+
+* urllib.parse.urlunparse(parts)
+
+* urllib.parse.urlsplit(urlstring, scheme=”, allow_fragments=True)
+
+* urllib.parse.urlunsplit(parts)
+
+* urllib.parse.urljoin(base, url, allow_fragments=True)
+
+* urllib.parse.urldefrag(url)
+
+### URL Quoting
+
+* urllib.parse.quote(string, safe=’/’, encoding=None, errors=None)
+
+* urllib.parse.quote_plus(string, safe=”, encoding=None, errors=None)
+
+* urllib.parse.quote_from_bytes(bytes, safe=’/’)
+
+* urllib.parse.unquote(string, encoding=’utf-8’, errors=’replace’)
+
+* urllib.parse.unquote_plus(string, encoding=’utf-8’, errors=’replace’)
+
+* urllib.parse.unquote_to_bytes(string)
+
+* urllib.parse.urlencode(query, doseq=False, safe=”, encoding=None, errors=None, quote_via=quote_plus)
