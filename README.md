@@ -204,5 +204,21 @@ print(soup.b.prettify())
 #### 输出
 #### 解析部分文档
 
+# [requests](http://docs.python-requests.org/zh_CN/latest/user/quickstart.html)
+
+### 发送请求
+
+        requests.get(url)
+        requests.post(url)
+        requests.delete(url)
+        requests.head(url)
+        requests.options(url)
+
+### 传递 URL 参数
+使用 params 关键字参数，以一个字符串字典来提供这些参数
+
+r = requests.get(url, params={'key1': 'value1', 'key2': 'value2'})
+
+
 
 
